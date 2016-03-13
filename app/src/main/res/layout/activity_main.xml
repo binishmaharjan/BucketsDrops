@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.legenddark.bucketsdrops.ActivityMain">
+
+
+    <include
+        layout="@layout/toobar"
+        android:id="@+id/toolbar"
+       />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/iv_background"
+        android:layout_below="@+id/toolbar"
+        />
+
+
+    <include layout="@layout/empty_drops"/>
+</RelativeLayout>
