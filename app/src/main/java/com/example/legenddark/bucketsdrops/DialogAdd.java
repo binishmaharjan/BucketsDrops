@@ -11,6 +11,11 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.legenddark.bucketsdrops.Beans.Drops;
+
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 /**
  * Created by legenddark on 2016/02/25.
  */
@@ -39,9 +44,18 @@ public class DialogAdd extends DialogFragment {
         }
     };
 
+    //TODO process date
     private void addAction() {
         String what = mInputWhat.getText().toString();
         long now = System.currentTimeMillis();
+        RealmConfiguration configuration = new RealmConfiguration.Builder(getActivity()).build();
+        Realm.setDefaultConfiguration(configuration);
+        Realm realm = Realm.getDefaultInstance();
+        Drops drops = new Drops(what,now,0,false);
+        realm.beginTransaction();
+        realm.copyToRealm(drops);
+        realm.commitTransaction();
+        realm.close();
     }
 
     public DialogAdd() {

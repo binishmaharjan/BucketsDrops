@@ -8,11 +8,23 @@ import io.realm.annotations.PrimaryKey;
  */
 public class Drops extends RealmObject {
 
+
     private String what;
     @PrimaryKey
     private long added;
     private long when;
     private boolean completed;
+
+
+    public Drops(String what, long added, long when, boolean completed) {
+        this.what = what;
+        this.added = added;
+        this.when = when;
+        this.completed = completed;
+    }
+
+
+    public Drops(){ }
 
     public String getWhat() {
         return what;
