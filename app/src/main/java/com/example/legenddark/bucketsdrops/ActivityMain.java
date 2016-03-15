@@ -2,6 +2,7 @@ package com.example.legenddark.bucketsdrops;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ public class ActivityMain extends AppCompatActivity {
 
     Toolbar mToolBar;
     Button mBtnAdd;
+    RecyclerView mRecycler;
     private View.OnClickListener mBtnAddListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -33,6 +35,7 @@ public class ActivityMain extends AppCompatActivity {
         mToolBar = (Toolbar) findViewById(R.id.toolbar);
         mBtnAdd = (Button) findViewById(R.id.iv_button);
         mBtnAdd.setOnClickListener(mBtnAddListener);
+        mRecycler = (RecyclerView) findViewById(R.id.rv_drops);
         setSupportActionBar(mToolBar);
 
 
