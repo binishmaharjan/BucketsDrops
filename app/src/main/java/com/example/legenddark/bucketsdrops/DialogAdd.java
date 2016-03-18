@@ -48,8 +48,6 @@ public class DialogAdd extends DialogFragment {
     private void addAction() {
         String what = mInputWhat.getText().toString();
         long now = System.currentTimeMillis();
-        RealmConfiguration configuration = new RealmConfiguration.Builder(getActivity()).build();
-        Realm.setDefaultConfiguration(configuration);
         Realm realm = Realm.getDefaultInstance();
         Drops drops = new Drops(what,now,0,false);
         realm.beginTransaction();
