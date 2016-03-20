@@ -12,7 +12,6 @@ import com.bumptech.glide.Glide;
 import com.example.legenddark.bucketsdrops.Beans.Drops;
 import com.example.legenddark.bucketsdrops.adapters.AdapterDrops;
 import com.example.legenddark.bucketsdrops.adapters.Divider;
-import com.example.legenddark.bucketsdrops.adapters.DividerWorking;
 import com.example.legenddark.bucketsdrops.widget.BucketRecylerView;
 
 import io.realm.Realm;
