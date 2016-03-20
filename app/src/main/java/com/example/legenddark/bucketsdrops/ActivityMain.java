@@ -3,7 +3,6 @@ package com.example.legenddark.bucketsdrops;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +11,9 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.example.legenddark.bucketsdrops.Beans.Drops;
 import com.example.legenddark.bucketsdrops.adapters.AdapterDrops;
+import com.example.legenddark.bucketsdrops.adapters.Divider;
+import com.example.legenddark.bucketsdrops.adapters.DividerWorking;
+import com.example.legenddark.bucketsdrops.widget.BucketRecylerView;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
@@ -21,10 +23,11 @@ public class ActivityMain extends AppCompatActivity {
 
     Toolbar mToolBar;
     Button mBtnAdd;
-    RecyclerView mRecycler;
+    BucketRecylerView mRecycler;
     Realm mRealm;
     RealmResults<Drops> mResults;
     AdapterDrops mAdapter;
+    View emptyView;
     private View.OnClickListener mBtnAddListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -53,15 +56,21 @@ public class ActivityMain extends AppCompatActivity {
         mResults = mRealm.where(Drops.class).findAllAsync();
 
         mToolBar = (Toolbar) findViewById(R.id.toolbar);
-        mBtnAdd = (Button) findViewById(R.id.iv_button);
+        mBtnAdd = (Button) findViewById(R
+                .id.iv_button);
+        emptyView =findViewById(R.id.empty_drops);
         mBtnAdd.setOnClickListener(mBtnAddListener);
-        mRecycler = (RecyclerView) findViewById(R.id.rv_drops);
+        mRecycler = (BucketRecylerView) findViewById(R.id.rv_drops);
+
+        mRecycler.hideIfEmpty(mToolBar);
+        mRecycler.showIfEmpty(emptyView);
 
         LinearLayoutManager manager = new LinearLayoutManager(this);
         mRecycler.setLayoutManager(manager);
 
         mAdapter = new AdapterDrops(this,mResults);
         mRecycler.setAdapter(mAdapter);
+        mRecycler.addItemDecoration(new Divider(this,LinearLayoutManager.VERTICAL));
 
         setSupportActionBar(mToolBar);
 

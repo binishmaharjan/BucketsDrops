@@ -6,23 +6,26 @@
     tools:context="com.example.legenddark.bucketsdrops.ActivityMain">
 
 
-    <include
-        layout="@layout/toobar"
-        android:id="@+id/toolbar"
-       />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/iv_background"
-        android:layout_below="@+id/toolbar"
         />
 
-    <android.support.v7.widget.RecyclerView
+    <include
+        layout="@layout/toobar"
+        android:id="@+id/toolbar"
+       />
+
+
+    <com.example.legenddark.bucketsdrops.widget.BucketRecylerView
         android:layout_below="@+id/toolbar"
         android:id="@+id/rv_drops"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <include layout="@layout/empty_drops"/>
+    <include
+        layout="@layout/empty_drops"
+        android:id="@+id/empty_drops"/>
 </RelativeLayout>
